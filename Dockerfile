@@ -2,9 +2,9 @@
 FROM node:24-alpine AS build-stage
 
 WORKDIR /app
-COPY ./Modelab/package*.json ./
+COPY ./modelab-web/package*.json ./
 RUN npm install
-COPY ./Modelab/ .
+COPY ./modelab-web/ .
 
 ARG VITE_API_PATH
 ARG VITE_CLIENT_ID
@@ -40,16 +40,40 @@ WORKDIR /var/www/html
 # Use production PHP config
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-COPY ./Modelab-api/src /var/www/html/api
+COPY ./modelab-api/src /var/www/html/api
+
+# Prepare app directories
+RUN mkdir -p /var/www/html/api/logs /var/www/html/api/data
+RUN chmod 777 /var/www/html/api/logs /var/www/html/api/data
+
+# Put the .env in the api
+ARG DEV_MODE
+ARG DATA_MAX_SIZE_MB
+ARG DB_SERVERNAME
+ARG DB_USERNAME
+ARG DB_PASSWORD
+ARG DB_DATABASE
+
+RUN cat <<EOF > /var/www/html/api/.env
+DEV_MODE=${DEV_MODE}
+
+LOG_PATH=/logs
+
+DATA_PATH=/data
+DATA_MAX_SIZE_MB=${DATA_MAX_SIZE_MB}
+
+DB_SERVERNAME=${DB_SERVERNAME}
+DB_USERNAME=${DB_USERNAME}
+DB_PASSWORD=${DB_PASSWORD}
+DB_DATABASE=${DB_DATABASE}
+EOF
 
 # Fix permissions...
 RUN chown -R www-data:www-data /var/www/html
-USER www-data
-
-# Prepare app
-RUN cd /var/www/html/api/ && mkdir logs && chmod 777 logs && mkdir data && chmod 777 data
 
 # Copy build over
 COPY --from=build-stage /app/dist /var/www/html/
+
+USER www-data
 
 CMD ["sh", "-c", "cd api && make setup && apache2-foreground"]

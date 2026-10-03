@@ -21,6 +21,12 @@ services:
         VITE_API_PATH: ${VITE_API_PATH}
         VITE_CLIENT_ID: ${VITE_CLIENT_ID}
         VITE_DEV_LOGIN: ${VITE_DEV_LOGIN}
+        DEV_MODE: ${DEV_MODE}
+        DATA_MAX_SIZE_MB: ${DATA_MAX_SIZE_MB}
+        DB_SERVERNAME: ${DB_SERVERNAME}
+        DB_USERNAME: ${DB_USERNAME}
+        DB_PASSWORD: ${DB_PASSWORD}
+        DB_DATABASE: ${DB_DATABASE}
     container_name: modelab
     restart: unless-stopped
     ports:
