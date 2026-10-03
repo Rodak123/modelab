@@ -2,7 +2,7 @@
 
 namespace App\Services\GoogleAuth;
 
-require_once __DIR__ . '/google-api-php-client--PHP7.0/vendor/autoload.php';
+require_once __DIR__ . '/google-api-php-client--PHP8.3/vendor/autoload.php';
 
 use Google_Client;
 use Google_Service_Oauth2;

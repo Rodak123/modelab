@@ -75,13 +75,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     dispatch(UserStateActions.loginStart());
 
     try {
-      console.log('login with' + googleToken);
       const { token } = await USER.login({ accessToken: googleToken });
-      console.log(token);
       setToken(token);
 
       const { user } = await USER.info();
-      console.log(user);
 
       dispatch(
         UserStateActions.loginSuccess({
