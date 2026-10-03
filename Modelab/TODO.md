@@ -1,0 +1,17 @@
+### TODO
+- Radek 
+  - [x] Add logging to API
+  - [x] Add health endpoint to API  
+  - [x] Add levels to users
+  - [x] Rework middleware and migrate all files
+  - [x] Change file type checking to use the extensions instead of MIME types (server will always provide the correct extension)
+  - [ ] Add email origin prefix field to Oauth client
+  - [ ] Landing page 3D model
+  - [ ] Dynamic tab title
+- Daniel
+ - [ ] animations
+ - [ ] Admin panel frontend
+  - [ ] panel page (api health, logs, email origin prefix field)
+  - [ ] assets page 
+  - [ ] user page (manage user level, mass delete)
+  - [ ] tags?

@@ -1,0 +1,153 @@
+{
+  "pages": {
+    "no_match": {
+      "no_match": "Oops! Page not found",
+      "message": "The page you're looking for doesn't exist or has been moved."
+    },
+    "browser": {
+      "clear_filters": "Clear filters",
+      "categories": "Categories",
+      "tags": "Tags"
+    },
+    "about": {
+      "about": "About Modelab",
+      "info": "Modelab is a database of models, textures and other assets that are made by students for students",
+      "offer": "Modelab offers 100% free assets for students working on games, websites, or school any other projects",
+      "whatIsModelab": "What is Modelab?",
+      "whoIsModelabFor": "Who is Modelab for?",
+      "howToCredit": "How to credit?",
+      "noNeed": "No need",
+      "howToContribute": "How to contribute?",
+      "contributing": "This project is open-source and is avaiable on GitHub. Feel free to make a pull request.",
+      "modelabOnGithub": "Modelab on GitHub"
+    },
+    "model_detail": {
+      "confirm": {
+        "download": "Download All",
+        "cancel": "Cancel",
+        "note": "Following files will be downloaded:"
+      },
+      "citation": {
+        "title": "Citation Data",
+        "copy": "Click on the element to copy the data:",
+        "cziso690": "Czech 690 ISO:",
+        "close": "Close",
+        "name": "Name",
+        "author": "Author",
+        "created": "Created",
+        "url": "URL"
+      },
+      "notFound": "The asset you're looking for doesn't exist or has been moved.",
+      "oops": "Oops! Asset not found",
+      "back": "Back",
+      "edit": "Edit",
+      "download_all": "Download",
+      "asset_name": "Asset name",
+      "author_name": "Author name",
+      "description": "Asset Description",
+      "category": "Category",
+      "tags": "Tags",
+      "preview": "Preview",
+      "saved": "Asset saved successfully!",
+      "generate_citation": "Citate"
+    },
+    "model_manage": {
+      "confirm": {
+        "yes": "Yes",
+        "no": "No",
+        "delete": "Delete asset",
+        "sure_delete": "Are you sure you want to delete",
+        "cant_undo": "This can't be undone."
+      },
+      "unsaved": {
+        "title": "Unsaved changes!",
+        "leave": "Leave",
+        "go_back": "Go back",
+        "sure_leave": "Are you sure you want to leave?"
+      },
+      "save": {
+        "not_enough": "Not enough data!",
+        "requiered": "name, description, files, and a tag is requiered",
+        "saved": "Asset saved successfully!",
+        "uploaded": "Asset uploaded successfully!",
+        "go_to_edit": "Go to edit"
+      },
+      "saveButton": "Save",
+      "deleteButton": "Delete",
+      "uploadButton": "Upload",
+      "previewButton": "Preview",
+      "asset_name": "Asset name",
+      "author_name": "Author name",
+      "description": "Asset Description",
+      "category": "Category",
+      "tags": "Tags",
+      "files": "Files"
+    },
+    "home": {
+      "welcome": "Welcome to Modelab",
+      "hello": "Hello",
+      "sign_in": "Sign in",
+      "features": "For all features",
+      "or": "or",
+      "browse": "Browse assets",
+      "without_downloads": "Without downloads"
+    }
+  },
+  "admin": {
+    "login": {
+      "title": "Modelab - Administration",
+      "not_authorized": "Unsufficient clearance",
+      "admin_only": "This page is only accessible for admins. Please log in with an account that has the required clearance.",
+      "sign_in": "Sign in"
+    }
+  },
+  "ui": {
+    "footer": {
+      "about": "About",
+      "upload_assets": "Upload Assets",
+      "browse_assets": "Browse Assets",
+      "home": "Home",
+      "no_clearance": "You don't have the required clearance for this function",
+      "login_required": "You must log in order to use this function"
+    },
+    "user_popup": {
+      "guest_user": "Guest User",
+      "without_downloads": "Without downloads",
+      "dark_mode": "Dark",
+      "light_mode": "Light",
+      "language": "English",
+      "switch_account": "Switch account",
+      "logout": "Logout",
+      "sign_in": "Sign in"
+    },
+    "message": {
+      "success": "Success",
+      "warning": "Warning",
+      "error": "Error",
+      "alert": "Alert",
+      "info": "Info"
+    },
+    "model_detail": {
+      "unsupported_browser": "Your browser does not support the audio element."
+    },
+    "model_preview": {
+      "login_required": "You must log in order to use this function",
+      "and_more": "...and {{count}} more"
+    },
+    "browser_results": {
+      "loading": "Loading...",
+      "no_assets": "No assets found."
+    },
+    "file_select": {
+      "add_more": "Add more files..."
+    },
+    "uploaded_file": {
+      "main": "Main",
+      "preview": "Preview",
+      "hidden": "Hidden"
+    },
+    "tagSelect": {
+      "searchAndSelectTags": "Search and select tags..."
+    }
+  }
+}

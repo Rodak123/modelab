@@ -1,0 +1,153 @@
+{
+  "pages": {
+    "no_match": {
+      "no_match": "Oops! Stránka nenalezena",
+      "message": "Stránka, kterou hledáte, neexistuje nebo byla přesunuta."
+    },
+    "browser": {
+      "clear_filters": "Vymazat filtry",
+      "categories": "Kategorie",
+      "tags": "Tagy"
+    },
+    "about": {
+      "about": "O Modelabu",
+      "info": "Modelab je databáze modelů, textur a dalších zdrojů, které vytvářejí studenti pro studenty",
+      "offer": "Modelab nabízí 100% zdarma zdroje pro studenty pracující na hrách, webových stránkách nebo školních projektech",
+      "whatIsModelab": "Co je Modelab?",
+      "whoIsModelabFor": "Pro koho je Modelab určen?",
+      "howToCredit": "Jak citovat?",
+      "noNeed": "Není potřeba",
+      "howToContribute": "Jak přispět?",
+      "contributing": "Tento projekt je open-source a je k dispozici na GitHubu. Neváhejte a pošlete pull request.",
+      "modelabOnGithub": "Modelab na GitHubu"
+    },
+    "model_detail": {
+      "confirm": {
+        "download": "Stáhnout vše",
+        "cancel": "Zrušit",
+        "note": "Následující soubory budou staženy:"
+      },
+      "citation": {
+        "title": "Data pro citaci",
+        "copy": "Klikněte na prvek pro zkopírování dat:",
+        "cziso690": "České 690 ISO:",
+        "close": "Zavřít",
+        "name": "Název",
+        "author": "Autor",
+        "created": "Vytvořeno",
+        "url": "URL"
+      },
+      "notFound": "Požadovaný asset neexistuje nebo byl přesunut.",
+      "oops": "Oops! Asset nenalezen",
+      "back": "Zpět",
+      "edit": "Upravit",
+      "asset_name": "Název assetu",
+      "author_name": "Autor",
+      "description": "Popis assetu",
+      "category": "Kategorie",
+      "tags": "Tagy",
+      "download_all": "Stáhnout",
+      "generate_citation": "Citovat",
+      "preview": "Náhled",
+      "saved": "Asset úspěšně uložen!"
+    },
+    "model_manage": {
+      "confirm": {
+        "yes": "Ano",
+        "no": "Ne",
+        "delete": "Smazat asset",
+        "sure_delete": "Opravdu chcete smazat",
+        "cant_undo": "Toto nelze vrátit zpět."
+      },
+      "unsaved": {
+        "title": "Neuložené změny!",
+        "leave": "Opustit",
+        "go_back": "Vrátit se zpět",
+        "sure_leave": "Opravdu chcete opustit?"
+      },
+      "save": {
+        "not_enough": "Nedostatek dat!",
+        "requiered": "název, popis, soubory a tag jsou povinné",
+        "saved": "Asset úspěšně uložen!",
+        "uploaded": "Asset úspěšně nahrán!",
+        "go_to_edit": "Přejít na úpravy"
+      },
+      "saveButton": "Uložit",
+      "deleteButton": "Smazat",
+      "uploadButton": "Nahrát",
+      "previewButton": "Náhled",
+      "asset_name": "Název assetu",
+      "author_name": "Autor",
+      "description": "Popis assetu",
+      "category": "Kategorie",
+      "tags": "Tagy",
+      "files": "Soubory"
+    },
+    "home": {
+      "welcome": "Vítejte v Modelab",
+      "hello": "Vítej",
+      "sign_in": "Přihlásit se",
+      "features": "Pro všechny funkce",
+      "or": "nebo",
+      "browse": "Prohlížet assety",
+      "without_downloads": "Bez stahování"
+    }
+  },
+  "admin": {
+    "login": {
+      "title": "Modelab - Administrace",
+      "not_authorized": "Nedostatečné oprávnění",
+      "admin_only": "Tato stránka je přístupná pouze pro administrátory. Přihlaste se prosím s účtem, který má požadované oprávnění.",
+      "sign_in": "Přihlásit se"
+    }
+  },
+  "ui": {
+    "footer": {
+      "about": "O nás",
+      "upload_assets": "Nahrát assety",
+      "browse_assets": "Prohlížet assety",
+      "home": "Domů",
+      "no_clearance": "Nemáte potřebná oprávnění pro tuto funkci",
+      "login_required": "Pro použití této funkce se musíte přihlásit"
+    },
+    "user_popup": {
+      "guest_user": "Návštěvník",
+      "without_downloads": "Bez stahování",
+      "dark_mode": "Tmavý",
+      "light_mode": "Světlý",
+      "language": "Čeština",
+      "switch_account": "Přepnout účet",
+      "logout": "Odhlásit se",
+      "sign_in": "Přihlásit se"
+    },
+    "message": {
+      "success": "Úspěch",
+      "warning": "Varování",
+      "error": "Chyba",
+      "alert": "Upozornění",
+      "info": "Informace"
+    },
+    "model_preview": {
+      "login_required": "Pro použití této funkce se musíte přihlásit",
+      "and_more": "...a {{count}} více"
+    },
+    "browser_results": {
+      "loading": "Načítání...",
+      "no_assets": "Žádné modely nenalezeny."
+    },
+    "file_select": {
+      "add_more": "Přidat další soubory..."
+    },
+    "model_detail": {
+      "unsupported_browser": "Váš prohlížeč nepodporuje audio prvek."
+    },
+    "uploaded_file": {
+      "main": "Hlavní",
+      "preview": "Náhled",
+      "hidden": "Skryté"
+    },
+    "tagSelect": {
+      "searchAndSelectTags": "Vyhledat a vybrat tagy..."
+    }
+  }
+}

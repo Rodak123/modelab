@@ -1,0 +1,62 @@
+<?php
+
+namespace App\Models;
+
+use App\Services\Database\BaseModels\BaseModelId;
+
+class Asset extends BaseModelId
+{
+    /**
+     * @sql VARCHAR(128) NOT NULL
+     * @var string
+     */
+    public $name;
+
+    /**
+     * @sql TEXT NOT NULL
+     * @var string
+     */
+    public $description;
+
+    /**
+     * @sql VARCHAR(128)
+     * @var string|null
+     */
+    public $author;
+
+    /**
+     * @sql INTEGER NOT NULL
+     * @var int
+     */
+    public $categoryId;
+
+    /**
+     * @sql VARCHAR(2048) NOT NULL
+     * @var string
+     */
+    public $filesDirectory;
+
+    /**
+     * @sql INTEGER NOT NULL
+     * @var int
+     */
+    public $uploaderId;
+
+    /**
+     * @sql INTEGER
+     * @var int
+     */
+    public $previewFileId;
+
+    /**
+     * @sql DATETIME NOT NULL
+     * @var string
+     */
+    public $created;
+
+    /**
+     * @sql DATETIME NOT NULL
+     * @var string
+     */
+    public $updated;
+}

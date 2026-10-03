@@ -1,0 +1,46 @@
+import * as React from 'react';
+import { BaseLayout } from '../../libs/ui/layouts';
+import { Label } from '../../libs/ui/components';
+import { AboutSection } from '../../libs/ui/components/AboutSection';
+import { cn } from '../../libs/utils';
+import { useResponsive, useTitle, useTranslation } from '../../libs/hooks';
+import { Link } from 'react-router-dom';
+
+const About: React.FC = () => {
+  const t = useTranslation("pages.about");
+
+  useTitle({ type: 'name', name: 'About' });
+
+  const { isDesktop } = useResponsive();
+
+  return (
+    <BaseLayout bordered={true}>
+      <main className={cn("pt-10 overflow-y-auto custom-scrollbar", isDesktop ? "ps-8" : "px-2")}>
+        <Label size={'md'}>{t("about")}</Label>
+        <div className="ps-2">
+          <AboutSection title={t("whatIsModelab")}>
+            {t("info")}
+          </AboutSection>
+          <AboutSection title={t("whoIsModelabFor")}>
+            {t("offer")}
+          </AboutSection>
+          <AboutSection title={t("howToCredit")}>
+            {t("noNeed")}
+          </AboutSection>
+          <AboutSection title={t("howToContribute")}>
+            {t("contributing")}
+            <br />
+            <Link
+              to={'https://github.com/DanielHaas21/Modelab'}
+              className="text-xl hover-underline-animation no-underline text-text-950 mx-[10px] px-[10px]"
+            >
+              {t("modelabOnGithub")}
+            </Link>
+          </AboutSection>
+        </div>
+      </main>
+    </BaseLayout>
+  );
+};
+
+export default About;

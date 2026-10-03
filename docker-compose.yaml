@@ -1,0 +1,56 @@
+services:
+  modelab_db:
+    image: mysql:8.0
+    container_name: modelab_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: modelab_db
+      MYSQL_USER: api_user
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root_secret
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: "exit 0"
+  
+  modelab:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: modelab
+    restart: unless-stopped
+    ports:
+      - "8030:80"
+    depends_on:
+      modelab_db:
+        condition: service_healthy
+
+  # modelab_api:
+  #   build:
+  #     context: ./Modelab-api
+  #     dockerfile: Dockerfile
+  #   container_name: modelab_api
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8020:80"
+  #   # env_file:
+  #   #   - ./Modelab-api/src/.env
+  #   healthcheck:
+  #     test: "exit 0"
+  #   depends_on:
+  #     modelab_db:
+  #       condition: service_healthy
+
+  # modelab_web:
+  #   build:
+  #     context: ./Modelab
+  #     dockerfile: Dockerfile
+  #   container_name: modelab_web
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8030:80"
+  #   # env_file:
+  #   #   - ./Modelab/.env
+  #   depends_on:
+  #     modelab_api:
+  #       condition: service_healthy
