@@ -5,6 +5,15 @@ WORKDIR /app
 COPY ./Modelab/package*.json ./
 RUN npm install
 COPY ./Modelab/ .
+
+ARG VITE_API_PATH
+ARG VITE_CLIENT_ID
+ARG VITE_DEV_LOGIN
+
+ENV VITE_API_PATH=$VITE_API_PATH
+ENV VITE_CLIENT_ID=$VITE_CLIENT_ID
+ENV VITE_DEV_LOGIN=$VITE_DEV_LOGIN
+
 RUN npm run build
 
 # Stage 2: Setup API and serve

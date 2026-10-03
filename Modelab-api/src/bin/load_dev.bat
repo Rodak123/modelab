@@ -1,5 +1,5 @@
 @echo off
-php bin/actions/SETUP_DEV.php
+php bin/actions/LOAD_DEV.php
 if %errorlevel% neq 0 (
     echo Error while setuping app.
     exit /b %errorlevel%

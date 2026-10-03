@@ -183,14 +183,16 @@ class FileController
                 throw RequestError::CreateFieldError(404, 'id', 'Asset with %key%: \'' . $id . '\' doesn\'t exist');
             }
 
-            $files = array_map(function ($file) use ($asset) {
+            $asset_files_service = new AssetFilesService();
+
+            $files = $asset_files_service->SelectAssetFiles($asset);
+
+            $files_data = array_map(function ($file) use ($asset) {
                 return self::CreateFileData($file, $asset);
-            }, File::SelectWhereModels('assetId = :assetId', [
-                            ':assetId' => $asset->id
-                        ]));
+            }, $files);
 
             $res->SetJSON([
-                'files' => $files
+                'files' => $files_data
             ]);
         };
     }

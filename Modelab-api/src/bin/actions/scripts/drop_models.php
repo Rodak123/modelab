@@ -26,6 +26,6 @@ foreach (DB_ALL_MODELS as $modelClass) {
 echoLine('Clearing files...');
 
 $service = new AssetFilesService();
-$service->RemoveStrayAssetFiles();
+$service->DeleteStrayAssetFiles();
 
 echoLine('Dropping Models OK');

@@ -4,10 +4,10 @@ services:
     container_name: modelab_db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: modelab_db
-      MYSQL_USER: api_user
-      MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: root_secret
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports:
       - "3307:3306"
     healthcheck:
@@ -17,40 +17,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        VITE_API_PATH: ${VITE_API_PATH}
+        VITE_CLIENT_ID: ${VITE_CLIENT_ID}
+        VITE_DEV_LOGIN: ${VITE_DEV_LOGIN}
     container_name: modelab
     restart: unless-stopped
     ports:
       - "8030:80"
+    env_file:
+      - .env
     depends_on:
       modelab_db:
         condition: service_healthy
-
-  # modelab_api:
-  #   build:
-  #     context: ./Modelab-api
-  #     dockerfile: Dockerfile
-  #   container_name: modelab_api
-  #   restart: unless-stopped
-  #   ports:
-  #     - "8020:80"
-  #   # env_file:
-  #   #   - ./Modelab-api/src/.env
-  #   healthcheck:
-  #     test: "exit 0"
-  #   depends_on:
-  #     modelab_db:
-  #       condition: service_healthy
-
-  # modelab_web:
-  #   build:
-  #     context: ./Modelab
-  #     dockerfile: Dockerfile
-  #   container_name: modelab_web
-  #   restart: unless-stopped
-  #   ports:
-  #     - "8030:80"
-  #   # env_file:
-  #   #   - ./Modelab/.env
-  #   depends_on:
-  #     modelab_api:
-  #       condition: service_healthy

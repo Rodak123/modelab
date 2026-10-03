@@ -3,20 +3,17 @@
 namespace App\Controllers;
 
 use App\Services\Database\SQL;
-use App\Services\Files\AssetFilesConfig;
 use App\Services\Files\AssetFilesService;
 use App\Middleware\MiddlewareController;
 use App\Models\Asset;
 use App\Models\AssetTag;
 use App\Models\Auth\User;
 use App\Models\Category;
-use App\Models\File;
 use App\Models\Tag;
 use App\Services\Router\DataValidator;
 use App\Services\Router\Request;
 use App\Services\Router\RequestError;
 use App\Services\Router\Response;
-use Error;
 use Exception;
 
 class AssetController
@@ -239,7 +236,7 @@ class AssetController
                 throw RequestError::CreateFieldError(404, 'id', 'Asset with %key%: \'' . $id . '\' doesn\'t exist');
             }
 
-            $tags =  AssetTag::SelectWhereModels('assetId = :assetId', [
+            $tags = AssetTag::SelectWhereModels('assetId = :assetId', [
                 ':assetId' => $asset->id
             ]);
             $category = Category::SelectModel($asset->categoryId);

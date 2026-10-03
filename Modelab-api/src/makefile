@@ -3,13 +3,13 @@ SH_PATH = bin
 .PHONY: setup drop-models state-export state-import
 
 default:
-	@echo "No action specified. Use: setup|setup-dev|drop-models|state-export|state-import"
+	@echo "No action specified. Use: setup|load-dev|drop-models|state-export|state-import"
 
 setup:
 	@bash $(SH_PATH)/setup.sh
 
-setup-dev:
-	@bash $(SH_PATH)/setup-dev.sh
+load-dev:
+	@bash $(SH_PATH)/load-dev.sh
 
 drop-models:
 	@bash $(SH_PATH)/drop-models.sh

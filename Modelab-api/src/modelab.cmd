@@ -6,7 +6,7 @@ IF "%1"=="" (
     echo  ^|              Before executing any script            ^| 
     echo  ^|  make sure to have your database server turned on!  ^| 
     echo  -------------------------------------------------------
-    echo  No action specified. Use: setup, setup-dev, drop-models, state-export, state-import
+    echo  No action specified. Use: setup, load-dev, drop-models, state-export, state-import
     exit /b
 )
 
@@ -18,11 +18,11 @@ IF "%1"=="setup" (
     goto end
 )
 
-IF "%1"=="setup-dev" (
+IF "%1"=="load-dev" (
     echo  -----------------------------------
-    echo  ^| Executing script: setup-dev.bat  ^| 
+    echo  ^| Executing script: load-dev.bat  ^| 
     echo  -----------------------------------
-    call bin/setup-dev.bat
+    call bin/load-dev.bat
     goto end
 )
 
@@ -52,7 +52,7 @@ IF "%1"=="state-import" (
 
 echo  ---------------------------------------------------------------
 echo  ^|           Invalid argument. Valid arguments are:            ^| 
-echo  ^|  setup, setup-dev, drop-models, state-export, state-import  ^| 
+echo  ^|  setup, load-dev, drop-models, state-export, state-import  ^| 
 echo  ---------------------------------------------------------------
 exit /b
 

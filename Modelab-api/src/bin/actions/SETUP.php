@@ -25,3 +25,6 @@ require __DIR__ . '/scripts/validate_asset_files.php';
 
 // Populate DB
 require __DIR__ . '/scripts/populate_db.php';
+
+// Clean up
+require __DIR__ . '/scripts/clean_up_data.php';

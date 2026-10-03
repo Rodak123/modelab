@@ -337,9 +337,7 @@ class AssetFilesService
 
     public function DeleteAsset(Asset $asset): void
     {
-        $files = File::SelectWhereModels('assetId = :assetId', [
-            ':assetId' => $asset->id
-        ]);
+        $files = self::SelectAssetFiles($asset);
 
         foreach ($files as $file) {
             if (file_exists($file->path) && !unlink($file->path)) {
@@ -355,7 +353,7 @@ class AssetFilesService
         $asset->Delete();
     }
 
-    public function RemoveStrayAssetFiles(): void
+    public function DeleteStrayAssetFiles(): void
     {
         $asset_dirs = glob(AssetFilesConfig::$DATA_PATH . '/*');
 
@@ -408,5 +406,17 @@ class AssetFilesService
                 throw new Exception('Failed to remove stray asset folder: \'' . $asset_dir . '\'');
             }
         }
+    }
+
+    /**
+     * @param Asset $asset
+     * @return File[]
+     */
+    public function SelectAssetFiles(Asset $asset): array
+    {
+        $files = File::SelectWhereModels('assetId = :assetId', [
+            ':assetId' => $asset->id
+        ]);
+        return $files;
     }
 }
