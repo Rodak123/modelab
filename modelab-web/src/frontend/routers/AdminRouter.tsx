@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import NoMatchPage from '../pages/NoMatchPage';
 import { ADMIN_ROUTES } from '../../global/routes';
 import Login from '../pages/admin/Login';
@@ -13,12 +13,13 @@ import AdminPanel from '../pages/admin/AdminPanel';
 const AdminRouter: React.FC = () => {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to={'./' + ADMIN_ROUTES.Login} replace />} />
       <Route path={ADMIN_ROUTES.Login} element={<Login />} />
       {/*
       <Route path={ADMIN_ROUTES.Users} element={<AdminPanel />} />
       <Route path={ADMIN_ROUTES.Assets} element={<AdminPanel />} /> */}
-      <Route path="*" element={<NoMatchPage />} />
       <Route path={ADMIN_ROUTES.Panel} element={<AdminPanel />} />
+      <Route path="*" element={<NoMatchPage />} />
     </Routes>
   );
 };

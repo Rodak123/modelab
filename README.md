@@ -56,6 +56,8 @@ Modelab is now hosted and ready to be used! Except not really, the API has a whi
 - [x] Application
   - [x] Google authentication
   - [x] Mobile support
+  - [x] Light and dark themes
+  - [x] Localization (czech and english)
   - [x] Browser
     - [x] Searching and filtering with tags and categories
   - [x] Preview

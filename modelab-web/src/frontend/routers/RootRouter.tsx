@@ -10,7 +10,7 @@ import ModelManage from '../pages/ModelManage';
 import AdminRouter from './AdminRouter';
 
 /**
- * There should be no active HTML in this component, only wrapping of providers, routers etc.
+- There should be no active HTML in this component, only wrapping of providers, routers etc.
  */
 const RootRouter: React.FC = () => {
   return (

@@ -1,6 +1,5 @@
-
 /**
- * A tuple of all the routes in the application. 
+ * A tuple of all the routes in the application.
  */
 export const ROOT_ROUTES = {
   LandingPage: '/',
@@ -8,11 +7,11 @@ export const ROOT_ROUTES = {
   About: '/about',
   ModelDetail: '/models/',
   ModelManage: '/manage/',
-  AdminRoot: '/admin',
+  AdminRoot: '/admin/',
 } as const;
 
 /**
- * A tuple of all the admin routes. 
+ * A tuple of all the admin routes.
  */
 export const ADMIN_ROUTES = {
   Panel: '/panel/',
