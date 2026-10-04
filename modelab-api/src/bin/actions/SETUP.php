@@ -9,22 +9,11 @@
  * This action setups the entire backend.
  */
 
-require_once __DIR__ . '/../../autoload.php';
+require_once __DIR__ . '/scripts/index.php';
 
-// .env
-require __DIR__ . '/scripts/validate_env.php';
-
-// Database
-require __DIR__ . '/scripts/validate_db.php';
-
-// Logging
-require __DIR__ . '/scripts/validate_logging.php';
-
-// File saving
-require __DIR__ . '/scripts/validate_asset_files.php';
-
-// Populate DB
-require __DIR__ . '/scripts/populate_db.php';
-
-// Clean up
-require __DIR__ . '/scripts/clean_up_data.php';
+validateEnv();
+validateDB();
+validateLogging();
+validateAssetFiles();
+populateDB();
+cleanUpData();

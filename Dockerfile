@@ -68,12 +68,14 @@ DB_PASSWORD=${DB_PASSWORD}
 DB_DATABASE=${DB_DATABASE}
 EOF
 
-# Fix permissions...
-RUN chown -R www-data:www-data /var/www/html
-
 # Copy vite build over
 COPY --from=build-stage /app/dist /var/www/html/
 
+# Fix permissions...
+RUN chown -R www-data:www-data /var/www/html
+
 USER www-data
 
-CMD ["sh", "-c", "cd api && make setup && apache2-foreground"]
+ARG ADMIN_EMAIL
+
+CMD ["sh", "-c", "cd api && make setup && make create-admin ADMIN_EMAIL=${ADMIN_EMAIL} && apache2-foreground"]

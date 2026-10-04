@@ -1,9 +1,9 @@
 SH_PATH = bin
 
-.PHONY: setup drop-models state-export state-import
+.PHONY: setup load-dev drop-models create-admin state-export state-import
 
 default:
-	@echo "No action specified. Use: setup|load-dev|drop-models|state-export|state-import"
+	@echo "No action specified. Use: setup|load-dev|drop-models|create-admin|state-export|state-import"
 
 setup:
 	@bash $(SH_PATH)/setup.sh
@@ -13,6 +13,9 @@ load-dev:
 
 drop-models:
 	@bash $(SH_PATH)/drop-models.sh
+
+create-admin:
+	@bash $(SH_PATH)/create-admin.sh $(ADMIN_EMAIL)
 
 state-export:
 	@bash $(SH_PATH)/state-export.sh

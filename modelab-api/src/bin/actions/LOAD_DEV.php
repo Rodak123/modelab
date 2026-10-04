@@ -9,7 +9,6 @@
  * This action loads development assets.
  */
 
-require_once __DIR__ . '/../../autoload.php';
+require_once __DIR__ . '/scripts/index.php';
 
-// Load development assets
-require __DIR__ . '/scripts/load_dev_assets.php';
+loadDevAssets();

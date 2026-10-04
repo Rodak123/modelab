@@ -5,50 +5,56 @@ use App\Models\Asset;
 use App\Models\File;
 use App\Services\Files\AssetFilesService;
 
-require_once __DIR__ . '/utils.php';
 require_once __DIR__ . '/dev_assets/data.php';
 
-echoLine();
-echoLine('Cleaning up data...');
-
-Env::Load();
-
-echoLine('Checking assets files...');
-
 /**
- * @var Asset[]
+ * Removes ghost file DB entries and stray files without an DB entry.
+ * @return void
  */
-$assets = Asset::SelectAllModels();
+function cleanUpData(): void
+{
+    echoLine();
+    echoLine('Cleaning up data...');
 
-$asset_files_service = new AssetFilesService();
+    Env::Load();
 
-foreach ($assets as $asset) {
-    echoLine('Checking asset \'' . $asset->name . '\'...');
-    $files = $asset_files_service->SelectAssetFiles($asset);
+    echoLine('Checking assets files...');
 
     /**
-     * @var File[]
+     * @var Asset[]
      */
-    $missing_files = [];
+    $assets = Asset::SelectAllModels();
 
-    foreach ($files as $file) {
-        echoLine('Checking file \'' . $file->path . '\'...');
+    $asset_files_service = new AssetFilesService();
 
-        if (!is_file($file->path)) {
-            echoLine('File \'' . $file->name . '\' is missing, deleting it');
-            $missing_files[] = $file;
+    foreach ($assets as $asset) {
+        echoLine('Checking asset \'' . $asset->name . '\'...');
+        $files = $asset_files_service->SelectAssetFiles($asset);
 
-            $file->Delete();
+        /**
+         * @var File[]
+         */
+        $missing_files = [];
+
+        foreach ($files as $file) {
+            echoLine('Checking file \'' . $file->path . '\'...');
+
+            if (!is_file($file->path)) {
+                echoLine('File \'' . $file->name . '\' is missing, deleting it');
+                $missing_files[] = $file;
+
+                $file->Delete();
+            }
+        }
+
+        if (count($missing_files) == count($files)) {
+            echoLine('Asset \'' . $asset->name . '\' has no files left, deleting it');
+            $asset_files_service->DeleteAsset($asset);
         }
     }
 
-    if (count($missing_files) == count($files)) {
-        echoLine('Asset \'' . $asset->name . '\' has no files left, deleting it');
-        $asset_files_service->DeleteAsset($asset);
-    }
+    echoLine('Deleting stray asset files...');
+    $asset_files_service->DeleteStrayAssetFiles();
+
+    echoLine('Data cleanup OK');
 }
-
-echoLine('Deleting stray asset files...');
-$asset_files_service->DeleteStrayAssetFiles();
-
-echoLine('Data cleanup OK');

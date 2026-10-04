@@ -8,6 +8,7 @@ use App\Models\Tag;
 use App\Models\Auth\User;
 use App\Models\Auth\UserMeta;
 use App\Models\Auth\LoginSession;
+use App\Models\Auth\UserInvite;
 use App\Models\Config\Log;
 use App\Models\Config\Setting;
 
@@ -37,6 +38,7 @@ const DB_ALL_MODELS = [
 
     User::class,
     UserMeta::class,
+    UserInvite::class,
     LoginSession::class,
 
     Setting::class,

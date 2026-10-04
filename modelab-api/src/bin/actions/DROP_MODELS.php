@@ -9,7 +9,6 @@
  * This action drops all models and their DATA
  */
 
-require_once __DIR__ . '/../../autoload.php';
+require_once __DIR__ . '/scripts/index.php';
 
-// Drop models
-require __DIR__ . '/scripts/drop_models.php';
+dropModels();

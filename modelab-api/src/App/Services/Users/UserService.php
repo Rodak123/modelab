@@ -6,6 +6,7 @@ use App\Configuration\AppConfig;
 use App\Middleware\Clearance;
 use App\Models\Auth\LoginSession;
 use App\Models\Auth\User;
+use App\Models\Auth\UserInvite;
 use App\Models\Auth\UserMeta;
 use App\Services\Settings\SettingsService;
 use Exception;
@@ -36,7 +37,7 @@ class UserService
         return in_array($domain, $domain_whitelist);
     }
 
-    private function CreateUncheckedUser(string $email, string $givenName, string $familyName, string $picture): User
+    private function CreateUncheckedUser(string $email, string $givenName, string $familyName, string $picture, int|null $targetClearance = null): User
     {
         $user = new User();
         $user->email = $email;
@@ -49,7 +50,12 @@ class UserService
 
         $userMeta = new UserMeta();
         $userMeta->userId = $user->id;
-        $userMeta->clearance = AppConfig::$DEV_MODE ? Clearance::OVERLORD : Clearance::USER;
+
+        if ($targetClearance == null) {
+            $userMeta->clearance = AppConfig::$DEV_MODE ? Clearance::OVERLORD : Clearance::USER;
+        } else {
+            $userMeta->clearance = $targetClearance;
+        }
         $userMetaId = UserMeta::InsertModel($userMeta);
 
         $user->userMetaId = $userMetaId;
@@ -64,6 +70,15 @@ class UserService
 
         if ($user != null) {
             return $user;
+        }
+
+        $invite = UserInvite::SelectUserInvite($email);
+
+        if ($invite != null) {
+            $targetClearance = $invite->targetClearance;
+            $invite->Delete();
+
+            return $this->CreateUncheckedUser($email, $givenName, $familyName, $picture, $targetClearance);
         }
 
         if (!$this->IsEmailAllowed($email)) {

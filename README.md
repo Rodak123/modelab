@@ -30,6 +30,10 @@ If you want to integrate Modelab into a more specific setup, the `Dockerfile` is
 
 Modelab is now hosted and ready to be used! Except not really, the API has a white list of allowed emails (the default is none) and also the default user role is `user`.
 
+### Development/Testing setup
+
+
+
 ## Contents
 
 - [Modelab](#modelab)
@@ -39,6 +43,7 @@ Modelab is now hosted and ready to be used! Except not really, the API has a whi
       - [Using your own MySQL](#using-your-own-mysql)
       - [Your way](#your-way)
     - [Initial setup](#initial-setup)
+    - [Development/Testing setup](#developmenttesting-setup)
   - [Contents](#contents)
   - [Features](#features)
   - [Structure](#structure)
@@ -67,6 +72,7 @@ Modelab is now hosted and ready to be used! Except not really, the API has a whi
 - [x] Admin tools
   - [x] Asset uploading and managing
   - [ ] Interactive CLI
+  - [ ] Database migrations (yikes)
   - [ ] Dashboard
     - [ ] Settings configuration
     - [ ] Data export and import

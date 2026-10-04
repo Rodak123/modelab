@@ -9,6 +9,6 @@
  * This action exports the entire state of this server to the state/ directory
  */
 
-require_once __DIR__ . '/../../autoload.php';
+require_once __DIR__ . '/scripts/index.php';
 
 // TODO: This script and maybe make the export/import (state/) directory customizable in the .env
