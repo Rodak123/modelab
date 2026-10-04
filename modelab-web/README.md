@@ -1,14 +1,12 @@
-# Modelab
+# Modelab Web
 
-This is a model browser & viewer used for browsing a school-provided model databank with various models namely in .mb, .c4d, .fbx, .obj formats.
-This project is based on [React](https://react.dev/) and [PHP](https://www.php.net/)
+This is an fronted for [Modelab](../README.md).
 
 ## Contents
 
-- [Modelab](#modelab)
+- [Modelab Web](#modelab-web)
   - [Contents](#contents)
   - [Documentation](#documentation)
-  - [API](#api)
   - [Setup](#setup)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
@@ -19,12 +17,6 @@ This project is based on [React](https://react.dev/) and [PHP](https://www.php.n
 
 - [Development](./docs/DEVELOPMENT.md) - Technical overview and style guide
 - [Middleware](./docs/MIDDLEWARE.md) - Everything about middleware
-
-## API
-
-To learn more about the structure of the api see:
-
-[Modelab-api](https://github.com/DanielHaas21/Modelab-api)
 
 ## Setup
 

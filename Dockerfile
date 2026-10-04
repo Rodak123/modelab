@@ -6,13 +6,13 @@ COPY ./modelab-web/package*.json ./
 RUN npm install
 COPY ./modelab-web/ .
 
+ARG DEV_MODE
 ARG VITE_API_PATH
 ARG VITE_CLIENT_ID
-ARG VITE_DEV_LOGIN
 
-ENV VITE_API_PATH=$VITE_API_PATH
+ENV VITE_API_PATH=api
 ENV VITE_CLIENT_ID=$VITE_CLIENT_ID
-ENV VITE_DEV_LOGIN=$VITE_DEV_LOGIN
+ENV VITE_DEV_LOGIN=$DEV_MODE
 
 RUN npm run build
 
@@ -21,7 +21,7 @@ FROM php:8.3-apache
 
 RUN apt-get update
 
-# Setup PHP
+# Setup PHP (zip and gd are needed extensions)
 RUN docker-php-ext-install pdo pdo_mysql
 
 RUN apt-get install libzip-dev -y
@@ -31,7 +31,7 @@ RUN apt-get install libpng-dev libjpeg-dev libfreetype6-dev -y
 RUN docker-php-ext-configure gd --with-jpeg --with-freetype
 RUN docker-php-ext-install gd
 
-# Enable apache rewrite for htaccecss
+# Enable apache rewrite for htaccess
 RUN a2enmod rewrite
 RUN service apache2 restart
 
@@ -71,7 +71,7 @@ EOF
 # Fix permissions...
 RUN chown -R www-data:www-data /var/www/html
 
-# Copy build over
+# Copy vite build over
 COPY --from=build-stage /app/dist /var/www/html/
 
 USER www-data

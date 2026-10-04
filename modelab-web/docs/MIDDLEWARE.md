@@ -6,18 +6,11 @@
 
 - [Middleware / API](#middleware--api)
   - [Contents](#contents)
-  - [API](#api)
   - [Structure](#structure)
   - [Service](#service)
   - [Defining an endpoint](#defining-an-endpoint)
     - [Endpoint interfaces](#endpoint-interfaces)
     - [Endpoint query](#endpoint-query)
-
-## API
-
-To learn more about the structure of the api see:
-
-[Modelab-api](https://github.com/DanielHaas21/Modelab-api)
 
 ## Structure
 

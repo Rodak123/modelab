@@ -23,7 +23,7 @@ class SettingsService
      * @var array
      */
     public const SCHEMA = [
-        self::ALLOWED_EMAIL_DOMAINS => ['type' => 'array', 'default' => ['gmail.com'], 'read_clearance' => Clearance::ADMIN, 'write_clearance' => Clearance::ADMIN],
+        self::ALLOWED_EMAIL_DOMAINS => ['type' => 'array', 'default' => [], 'read_clearance' => Clearance::ADMIN, 'write_clearance' => Clearance::ADMIN],
     ];
 
     private const ARRAY_SEPARATOR = '$SEP$';

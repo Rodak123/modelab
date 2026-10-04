@@ -7,7 +7,7 @@ import { useResponsive, useTitle, useTranslation } from '../../libs/hooks';
 import { Link } from 'react-router-dom';
 
 const About: React.FC = () => {
-  const t = useTranslation("pages.about");
+  const t = useTranslation('pages.about');
 
   useTitle({ type: 'name', name: 'About' });
 
@@ -15,26 +15,20 @@ const About: React.FC = () => {
 
   return (
     <BaseLayout bordered={true}>
-      <main className={cn("pt-10 overflow-y-auto custom-scrollbar", isDesktop ? "ps-8" : "px-2")}>
-        <Label size={'md'}>{t("about")}</Label>
+      <main className={cn('pt-10 overflow-y-auto custom-scrollbar', isDesktop ? 'ps-8' : 'px-2')}>
+        <Label size={'md'}>{t('about')}</Label>
         <div className="ps-2">
-          <AboutSection title={t("whatIsModelab")}>
-            {t("info")}
-          </AboutSection>
-          <AboutSection title={t("whoIsModelabFor")}>
-            {t("offer")}
-          </AboutSection>
-          <AboutSection title={t("howToCredit")}>
-            {t("noNeed")}
-          </AboutSection>
-          <AboutSection title={t("howToContribute")}>
-            {t("contributing")}
+          <AboutSection title={t('whatIsModelab')}>{t('info')}</AboutSection>
+          <AboutSection title={t('whoIsModelabFor')}>{t('offer')}</AboutSection>
+          <AboutSection title={t('howToCredit')}>{t('noNeed')}</AboutSection>
+          <AboutSection title={t('howToContribute')}>
+            {t('contributing')}
             <br />
             <Link
-              to={'https://github.com/DanielHaas21/Modelab'}
+              to={'https://github.com/Rodak123/modelab'}
               className="text-xl hover-underline-animation no-underline text-text-950 mx-[10px] px-[10px]"
             >
-              {t("modelabOnGithub")}
+              {t('modelabOnGithub')}
             </Link>
           </AboutSection>
         </div>

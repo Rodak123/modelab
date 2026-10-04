@@ -1,10 +1,10 @@
-# Modelab-api
+# Modelab API
 
-This is an API and backend for [Modelab](https://github.com/DanielHaas21/Modelab)
+This is an API and backend for [Modelab](../README.md).
 
 ## Contents
 
-- [Modelab-api](#modelab-api)
+- [Modelab API](#modelab-api)
   - [Contents](#contents)
   - [Documentation](#documentation)
   - [Setup](#setup)
