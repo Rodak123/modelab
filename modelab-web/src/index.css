@@ -146,11 +146,6 @@
 }
 
 @layer utilities {
-  .bg-grid {
-    background-size: 140px 140px;
-    box-shadow: 0px 0px 200px 10px inset rgba(0, 0, 0, 0.8);
-  }
-
   .glowing {
     text-shadow: 0px 0px 100px rgba(255, 255, 255, 0.8);
   }
@@ -205,6 +200,29 @@
     100% {
       transform: translateX(-100%);
     }
+  }
+
+  @keyframes shakeRotateScale {
+    0%,
+    100% {
+      transform: translateX(0) rotate(0deg) scale(1);
+    }
+    20% {
+      transform: translateX(-4px) rotate(-3deg) scale(1.05);
+    }
+    40% {
+      transform: translateX(4px) rotate(3deg) scale(0.95);
+    }
+    60% {
+      transform: translateX(-3px) rotate(-2deg) scale(1.02);
+    }
+    80% {
+      transform: translateX(3px) rotate(2deg) scale(0.98);
+    }
+  }
+
+  .animate-shake {
+    animation: shakeRotateScale 0.35s ease-in-out infinite;
   }
 
   .animate-spinner-grow {

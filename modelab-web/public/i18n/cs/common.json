@@ -104,6 +104,7 @@
   "ui": {
     "footer": {
       "about": "O nás",
+      "admin": "Admin",
       "upload_assets": "Nahrát assety",
       "browse_assets": "Prohlížet assety",
       "home": "Domů",

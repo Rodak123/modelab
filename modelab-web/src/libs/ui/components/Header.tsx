@@ -8,6 +8,8 @@ import { AppDispatch, RootState } from '../../../store/store';
 import { Hide, Toggle } from '../../../store/slices/Popup';
 import { UserImage } from './UserImage';
 import { useTheme } from '../../hooks';
+import { ROOT_ROUTES } from '../../../global/routes';
+import { Link } from 'react-router-dom';
 
 interface HeaderProps {
   className?: string;
@@ -15,7 +17,7 @@ interface HeaderProps {
 }
 
 /**
- * The Header component serves as the top navigation bar for the application. It displays the application logo, title, and a user profile image. 
+ * The Header component serves as the top navigation bar for the application. It displays the application logo, title, and a user profile image.
  * When the user clicks on the profile image, it toggles the visibility of the UserPopup component, which contains user-related options. =
  */
 export const Header: React.FC<HeaderProps> = ({ className, children, ...props }) => {
@@ -65,19 +67,18 @@ export const Header: React.FC<HeaderProps> = ({ className, children, ...props })
         )}
         {...props}
       >
-        <div className="flex flex-row items-center">
-          <img
-            src={theme === 'dark' ? lightIcon : darkIcon}
-            className="ml-3 w-[60px]"
-            alt="logo"
-          />
-          <h1 className="ml-1 mt-1 text-[2rem] font-extralight">Modelab</h1>
-        </div>
+        <Link to={ROOT_ROUTES.LandingPage} className="btn ml-3 group">
+          <div className="flex flex-row items-center">
+            <img
+              src={theme === 'dark' ? lightIcon : darkIcon}
+              className="w-[60px] group-hover:animate-shake"
+              alt="Logo"
+            />
+            <h1 className="ml-1 mt-1 text-[2rem] font-extralight">Modelab</h1>
+          </div>
+        </Link>
         {children}
-        <UserImage
-          className='mr-5 cursor-pointer'
-          onClick={TogglePopup}
-        />
+        <UserImage className="mr-5 cursor-pointer" onClick={TogglePopup} />
       </header>
       {Popup && <UserPopup ref={popupRef} />}
     </>

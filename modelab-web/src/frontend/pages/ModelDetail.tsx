@@ -29,8 +29,6 @@ interface ModelDetailProps {
 }
 
 const ModelDetail: React.FC<ModelDetailProps> = ({ context }) => {
-  useValidatePermission(CLEARANCE.GUEST, ROOT_ROUTES.Browser);
-
   const t = useTranslation('pages.model_detail');
 
   const { show } = useToast();
@@ -47,6 +45,10 @@ const ModelDetail: React.FC<ModelDetailProps> = ({ context }) => {
   React.useEffect(() => {
     setTitle(context.asset.name);
   }, [context]);
+
+  if (useValidatePermission(CLEARANCE.GUEST, ROOT_ROUTES.Browser)) {
+    return;
+  }
 
   // zip download of all files
   const downloadAllAsZip = async (files: AssetFile[]) => {

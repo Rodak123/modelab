@@ -11,13 +11,14 @@ interface UserData {
 
 interface AuthData {
   authToken: string | null;
-  clearance: Clearance,
+  clearance: Clearance;
   isAuthenticated: boolean;
+  isInitialized: boolean;
 }
 
 interface LoginData {
   user: UserData;
-  auth: AuthData;
+  auth: Omit<AuthData, 'isInitialized'>;
 }
 
 interface UserState {
@@ -33,6 +34,7 @@ const initialState: UserState = {
     authToken: null,
     isAuthenticated: false,
     clearance: CLEARANCE.GUEST,
+    isInitialized: false,
   },
   loading: false,
   error: null,
@@ -48,7 +50,10 @@ const UserSlice = createSlice({
     },
     loginSuccess: (state, action: PayloadAction<LoginData>) => {
       state.user = action.payload.user;
-      state.auth = action.payload.auth;
+      state.auth = {
+        ...action.payload.auth,
+        isInitialized: true,
+      };
       state.loading = false;
     },
     loginFailure: (state, action: PayloadAction<string>) => {
@@ -56,7 +61,8 @@ const UserSlice = createSlice({
       state.auth = {
         authToken: null,
         isAuthenticated: false,
-        clearance: CLEARANCE.GUEST
+        clearance: CLEARANCE.GUEST,
+        isInitialized: true,
       };
       state.loading = false;
     },
@@ -65,7 +71,8 @@ const UserSlice = createSlice({
       state.auth = {
         authToken: null,
         isAuthenticated: false,
-        clearance: CLEARANCE.GUEST
+        clearance: CLEARANCE.GUEST,
+        isInitialized: true,
       };
       state.loading = false;
       state.error = null;

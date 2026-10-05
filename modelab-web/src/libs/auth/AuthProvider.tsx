@@ -76,6 +76,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     try {
       const { token } = await USER.login({ accessToken: googleToken });
+
       setToken(token);
 
       const { user } = await USER.info();
@@ -128,7 +129,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   // automatically logs out and initiates new login
   const changeAccount = () => {
-    logout();
     googleLogin();
   };
 
@@ -138,13 +138,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setToken(null);
   };
 
-  // auto refreshes
+  // auto refreshes or initializes
   useEffect(() => {
-    const hasStoredToken = Boolean(localStorage.getItem(AUTH_LS_KEY));
-    if (!UserData.auth?.isAuthenticated && hasStoredToken) {
+    if (UserData.auth?.isInitialized) return;
+
+    const token = localStorage.getItem(AUTH_LS_KEY);
+    if (token) {
       refreshAuth();
+    } else {
+      dispatch(UserStateActions.loginFailure('No stored token found.'));
     }
-  }, [UserData.auth?.isAuthenticated, refreshAuth]);
+  }, [UserData.auth?.isInitialized, refreshAuth, dispatch]);
 
   return (
     <AuthContext.Provider

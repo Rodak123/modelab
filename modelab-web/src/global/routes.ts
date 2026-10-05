@@ -7,7 +7,7 @@ export const ROOT_ROUTES = {
   About: '/about',
   ModelDetail: '/models/',
   ModelManage: '/manage/',
-  AdminRoot: '/admin/',
+  AdminRoot: '/admin',
 } as const;
 
 /**

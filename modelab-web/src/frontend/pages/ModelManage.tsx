@@ -39,11 +39,6 @@ const ModelManage: React.FC<ModelManageProps> = ({ context, refresh }) => {
 
   const { show } = useToast();
 
-  useValidatePermission(
-    CLEARANCE.ADMIN,
-    context.assetId != null ? ROOT_ROUTES.ModelDetail + context.assetId : ROOT_ROUTES.Browser
-  );
-
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
@@ -101,6 +96,15 @@ const ModelManage: React.FC<ModelManageProps> = ({ context, refresh }) => {
       setPreviewDetailFiles(assetFiles);
     })();
   }, [filesInput, context]);
+
+  if (
+    useValidatePermission(
+      CLEARANCE.ADMIN,
+      context.assetId != null ? ROOT_ROUTES.ModelDetail + context.assetId : ROOT_ROUTES.Browser
+    )
+  ) {
+    return;
+  }
 
   // delete model and return to browser
   const handleDelete = async () => {

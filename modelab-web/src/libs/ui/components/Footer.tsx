@@ -5,6 +5,16 @@ import { useTranslation, useResponsive } from '../../hooks';
 import { useCheckClearance } from '../../auth';
 import { Clearance, CLEARANCE } from '../../../store/types';
 import { ROOT_ROUTES } from '../../../global/routes';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faArrowUpFromBracket,
+  faHome,
+  faMagnifyingGlass,
+  faPerson,
+  faScrewdriverWrench,
+} from '@fortawesome/free-solid-svg-icons';
+import type { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { Label } from './Label';
 
 type NavLinkPosition = 'left' | 'middle' | 'right';
 
@@ -27,7 +37,7 @@ const FooterNavLink: React.FC<FooterNavLinkProps> = ({ path, position, children 
       className={cn(
         'text-xl hover-underline-animation no-underline text-text-950 border-ui-border',
         position === 'left' && 'border-e me-[10px] pe-[10px]',
-        position === 'middle' && 'border-e me-[10px] pe-[10px]',
+        position === 'middle' && 'border-e me-[10px] pe-[10px]'
       )}
     >
       {children}
@@ -53,26 +63,37 @@ export const Footer: React.FC<FooterProps> = ({
 
   interface NavLinkData extends Omit<FooterNavLinkProps, 'position'> {
     minClearance?: Clearance;
+    icon: IconProp;
   }
 
   const footerNavLinks: NavLinkData[] = [
     {
       minClearance: CLEARANCE.ADMIN,
+      path: ROOT_ROUTES.AdminRoot,
+      children: t('admin'),
+      icon: faScrewdriverWrench,
+    },
+    {
+      minClearance: CLEARANCE.ADMIN,
       path: ROOT_ROUTES.ModelManage + 'upload',
-      children: t('upload_assets')
+      children: t('upload_assets'),
+      icon: faArrowUpFromBracket,
     },
     {
       minClearance: CLEARANCE.USER,
       path: ROOT_ROUTES.Browser,
-      children: t('browse_assets')
+      children: t('browse_assets'),
+      icon: faMagnifyingGlass,
     },
     {
       path: ROOT_ROUTES.About,
-      children: t('about')
+      children: t('about'),
+      icon: faPerson,
     },
     {
       path: ROOT_ROUTES.LandingPage,
-      children: t('home')
+      children: t('home'),
+      icon: faHome,
     },
   ];
 
@@ -87,21 +108,23 @@ export const Footer: React.FC<FooterProps> = ({
       {...props}
     >
       {children}
-      <nav className={cn("flex flex-row justify-center", isDesktop && "mr-32")}>
+      <nav className={cn('flex flex-row justify-center', isDesktop && 'mr-32')}>
         {footerNavLinks
           .filter((linkData) => {
-            if (!hasClearance(linkData.minClearance ?? CLEARANCE.GUEST))
-              return false;
+            if (!hasClearance(linkData.minClearance ?? CLEARANCE.GUEST)) return false;
             return true;
           })
-          .map((linkData, index, arrray) => {
+          .map((linkData, index, array) => {
             return (
               <FooterNavLink
                 key={index}
                 path={linkData.path}
-                position={navLinkPositionOf(index, arrray.length)}
+                position={navLinkPositionOf(index, array.length)}
               >
-                {linkData.children}
+                <Label size="xs">
+                  <FontAwesomeIcon icon={linkData.icon} className="px-2" />
+                  {((!isDesktop && array.length <= 3) || isDesktop) && linkData.children}
+                </Label>
               </FooterNavLink>
             );
           })}

@@ -20,7 +20,7 @@ const RootRouter: React.FC = () => {
       <Route path={ROOT_ROUTES.About} element={<About />} />
       <Route path={ROOT_ROUTES.ModelDetail + ':modelId'} element={<ModelDetail />} />
       <Route path={ROOT_ROUTES.ModelManage + ':action'} element={<ModelManage />} />
-      <Route path={ROOT_ROUTES.AdminRoot + '*'} element={<AdminRouter />} />
+      <Route path={ROOT_ROUTES.AdminRoot + '/*'} element={<AdminRouter />} />
       <Route path="*" element={<NoMatchPage />} />
     </Routes>
   );
