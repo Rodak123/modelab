@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation, useResponsive } from '../../hooks';
 import { useCheckClearance } from '../../auth';
 import { Clearance, CLEARANCE } from '../../../store/types';
-import { ROOT_ROUTES } from '../../../global/routes';
+import { ADMIN_ROUTES, ROOT_ROUTES } from '../../../global/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowUpFromBracket,
@@ -69,29 +69,29 @@ export const Footer: React.FC<FooterProps> = ({
   const footerNavLinks: NavLinkData[] = [
     {
       minClearance: CLEARANCE.ADMIN,
-      path: ROOT_ROUTES.AdminRoot,
+      path: ROOT_ROUTES.AdminRoot(),
       children: t('admin'),
       icon: faScrewdriverWrench,
     },
     {
       minClearance: CLEARANCE.ADMIN,
-      path: ROOT_ROUTES.ModelManage + 'upload',
+      path: ADMIN_ROUTES.ModelManage('upload'),
       children: t('upload_assets'),
       icon: faArrowUpFromBracket,
     },
     {
       minClearance: CLEARANCE.USER,
-      path: ROOT_ROUTES.Browser,
+      path: ROOT_ROUTES.Browser(),
       children: t('browse_assets'),
       icon: faMagnifyingGlass,
     },
     {
-      path: ROOT_ROUTES.About,
+      path: ROOT_ROUTES.About(),
       children: t('about'),
       icon: faPerson,
     },
     {
-      path: ROOT_ROUTES.LandingPage,
+      path: ROOT_ROUTES.LandingPage(),
       children: t('home'),
       icon: faHome,
     },

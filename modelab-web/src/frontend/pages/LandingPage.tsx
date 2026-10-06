@@ -85,7 +85,7 @@ const LandingPage: React.FC = () => {
                         rounding="md"
                         size="md"
                       >
-                        <Link className="text-text-950 no-underline" to={ROOT_ROUTES.Browser}>
+                        <Link className="text-text-950 no-underline" to={ROOT_ROUTES.Browser()}>
                           {t('browse')}
                         </Link>
                       </Button>
@@ -119,7 +119,7 @@ const LandingPage: React.FC = () => {
                           rounding="md"
                           size="md"
                         >
-                          <Link className="text-text-950 no-underline" to={ROOT_ROUTES.Browser}>
+                          <Link className="text-text-950 no-underline" to={ROOT_ROUTES.Browser()}>
                             {t('browse')}
                           </Link>
                         </Button>

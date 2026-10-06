@@ -31,7 +31,8 @@ export const ModelPreview = React.forwardRef<HTMLDivElement, ModelPreviewProps>(
     const UserData = useSelector((state: RootState) => state.User);
 
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
-    const [modelPreviewContext, setModelPreviewContext] = React.useState<ModelPreviewContext | null>(null);
+    const [modelPreviewContext, setModelPreviewContext] =
+      React.useState<ModelPreviewContext | null>(null);
 
     React.useEffect(() => {
       (async () => {
@@ -48,25 +49,30 @@ export const ModelPreview = React.forwardRef<HTMLDivElement, ModelPreviewProps>(
 
     const previewUrl = modelPreviewContext?.previewUrl ?? null;
 
-    const tagsRender = asset.tags.slice(0, 8).map((tag, index) => (
-      <AssetTag key={index} name={tag.name} />
-    ));
-    const andMore = asset.tags.length > 8 && <span>{t('and_more', { count: asset.tags.length - 8 })}</span>;
+    const tagsRender = asset.tags
+      .slice(0, 8)
+      .map((tag, index) => <AssetTag key={index} name={tag.name} />);
+    const andMore = asset.tags.length > 8 && (
+      <span>{t('and_more', { count: asset.tags.length - 8 })}</span>
+    );
 
     return (
       <Link
-        to={ROOT_ROUTES.ModelDetail + asset.id}
+        to={ROOT_ROUTES.ModelDetail(asset.id)}
         className="no-underline text-text-950 rounded-lg group transition-all duration-300 hover:scale-[1.02]"
       >
         <div
-          className={cn(className, 'flex flex-col items-center mb-2 bg-bg-50 border border-ui-border rounded-lg overflow-hidden shadow-[0_2px_4px_rgba(0,0,0,0.1)]')}
+          className={cn(
+            className,
+            'flex flex-col items-center mb-2 bg-bg-50 border border-ui-border rounded-lg overflow-hidden shadow-[0_2px_4px_rgba(0,0,0,0.1)]'
+          )}
           style={{ width: `${width}px`, height: `${height}px` }}
           ref={ref}
           {...props}
         >
           <div className="w-[90%] grow mt-2 rounded-md overflow-hidden relative">
             <img
-              src={(isLoading || previewUrl === null) ? placeholder : previewUrl}
+              src={isLoading || previewUrl === null ? placeholder : previewUrl}
               className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
               alt={asset.name}
             />

@@ -14,7 +14,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ModelDetailLayout } from '../../libs/ui/layouts/ModelDetailLayout';
 import { AppDispatch } from '../../store/store';
 import { useDispatch } from 'react-redux';
-import { ROOT_ROUTES } from '../../global/routes';
+import { ADMIN_ROUTES, ROOT_ROUTES } from '../../global/routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faPen, faSave, faTrash, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { useValidatePermission } from '../../libs/auth';
@@ -100,7 +100,7 @@ const ModelManage: React.FC<ModelManageProps> = ({ context, refresh }) => {
   if (
     useValidatePermission(
       CLEARANCE.ADMIN,
-      context.assetId != null ? ROOT_ROUTES.ModelDetail + context.assetId : ROOT_ROUTES.Browser
+      context.assetId != null ? ROOT_ROUTES.ModelDetail(context.assetId) : ROOT_ROUTES.Browser()
     )
   ) {
     return;
@@ -126,7 +126,7 @@ const ModelManage: React.FC<ModelManageProps> = ({ context, refresh }) => {
     await context?.delete({
       id: context.assetId,
     });
-    navigate(ROOT_ROUTES.Browser);
+    navigate(ROOT_ROUTES.Browser());
   };
 
   // check if there are unsaved changes and show preview
@@ -163,7 +163,7 @@ const ModelManage: React.FC<ModelManageProps> = ({ context, refresh }) => {
           ) !== undefined
       )
     ) {
-      navigate(ROOT_ROUTES.ModelDetail + context.assetId);
+      navigate(ROOT_ROUTES.ModelDetail(context.assetId!));
       return;
     }
 
@@ -177,7 +177,7 @@ const ModelManage: React.FC<ModelManageProps> = ({ context, refresh }) => {
     );
 
     if (userConfirmedLeave) {
-      navigate(ROOT_ROUTES.ModelDetail + context.assetId);
+      navigate(ROOT_ROUTES.ModelDetail(context.assetId!));
     }
   };
 
@@ -234,7 +234,7 @@ const ModelManage: React.FC<ModelManageProps> = ({ context, refresh }) => {
         actions: (
           <Button
             variant="light"
-            onClick={() => navigate(ROOT_ROUTES.ModelManage + created.createdAssetId)}
+            onClick={() => navigate(ADMIN_ROUTES.ModelManage(created.createdAssetId))}
           >
             <FontAwesomeIcon icon={faPen} />
             <span className="w-full">{t('save.go_to_edit')}</span>
@@ -251,7 +251,7 @@ const ModelManage: React.FC<ModelManageProps> = ({ context, refresh }) => {
           <Link
             className="no-underline"
             onClick={handleShowPreview}
-            to={ROOT_ROUTES.ModelDetail + context.asset.id}
+            to={ROOT_ROUTES.ModelDetail(context.asset.id)}
           >
             <Button variant="light" className="justify-between w-full">
               <FontAwesomeIcon icon={faEye} />

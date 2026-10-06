@@ -15,7 +15,7 @@ import { cn } from '../../libs/utils';
 import { OffcanvasHandle, OffcanvasModal } from '../../libs/ui/components/OffcanvasModal';
 import { ModelDetailImageCarousel } from '../../libs/ui/components/ModelDetailImageCarousel';
 import { CLEARANCE } from '../../store/types';
-import { ROOT_ROUTES } from '../../global/routes';
+import { ADMIN_ROUTES, ROOT_ROUTES } from '../../global/routes';
 import { faArrowLeft, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CopyableField } from '../../libs/ui/components/CopyableField';
@@ -46,7 +46,7 @@ const ModelDetail: React.FC<ModelDetailProps> = ({ context }) => {
     setTitle(context.asset.name);
   }, [context]);
 
-  if (useValidatePermission(CLEARANCE.GUEST, ROOT_ROUTES.Browser)) {
+  if (useValidatePermission(CLEARANCE.GUEST, ROOT_ROUTES.Browser())) {
     return;
   }
 
@@ -155,7 +155,7 @@ const ModelDetail: React.FC<ModelDetailProps> = ({ context }) => {
   const ActionButtons = (
     <>
       <div className="w-1/2 p-1">
-        <Link className="no-underline" to={ROOT_ROUTES.Browser}>
+        <Link className="no-underline" to={ROOT_ROUTES.Browser()}>
           <Button variant="light" className="justify-between w-full">
             <FontAwesomeIcon icon={faArrowLeft} />
             <span className="w-full">{t('back')}</span>
@@ -164,7 +164,7 @@ const ModelDetail: React.FC<ModelDetailProps> = ({ context }) => {
       </div>
       {hasClearance(CLEARANCE.ADMIN) && (
         <div className="w-1/2 p-1">
-          <Link className="no-underline" to={ROOT_ROUTES.ModelManage + context.asset.id}>
+          <Link className="no-underline" to={ADMIN_ROUTES.ModelManage(context.asset.id)}>
             <Button variant="light" className="justify-between w-full">
               <FontAwesomeIcon icon={faPencil} />
               <span className="w-full">{t('edit')}</span>

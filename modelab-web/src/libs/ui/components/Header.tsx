@@ -67,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({ className, children, ...props })
         )}
         {...props}
       >
-        <Link to={ROOT_ROUTES.LandingPage} className="btn ml-3 group">
+        <Link to={ROOT_ROUTES.LandingPage()} className="btn ml-3 group">
           <div className="flex flex-row items-center">
             <img
               src={theme === 'dark' ? lightIcon : darkIcon}
